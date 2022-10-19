@@ -44,6 +44,10 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+        // Move up and down for demo purpose
+        MoveCharacterUp();
+        MoveCharacterDown();
+
         // walk sound
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
@@ -55,6 +59,22 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             walkSound.Stop();
+        }
+    }
+
+    void MoveCharacterUp()
+    {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            controller.Move(transform.up * moveSpeed * Time.deltaTime);
+        }
+    }
+
+    void MoveCharacterDown()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            controller.Move(-transform.up * moveSpeed * Time.deltaTime);
         }
     }
 }
